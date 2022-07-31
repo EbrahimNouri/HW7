@@ -1,4 +1,4 @@
-package Services;
+package services;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBHelper {
     private final String SERVER_ADDRESS = "127.0.0.1:5432";
-    private final String DBNAME = "hw6";
+    private final String DBNAME = "hw7";
     private final String USERNAME = "postgres";
     private final String PASSWORD = "b00r1h00m";
     private Connection connection;
