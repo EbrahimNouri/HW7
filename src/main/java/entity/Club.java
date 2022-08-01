@@ -2,23 +2,30 @@ package entity;
 
 import java.util.Objects;
 
-public abstract class Club  {
+public class Club  {
     private Long clubId;
     private String name;
     private int allGames;
     private int wins;
+    private int equals;
     private int lost;
     private int score;
     private Long playedVsId;
 
-    public Club(Long clubId, String name, int allGames, int wins, int lost, int score, Long playedVsId) {
+
+    public Club(Long clubId, String name, int allGames, int wins, int equals, int lost, int score, Long playedVsId) {
         this.clubId = clubId;
         this.name = name;
         this.allGames = allGames;
         this.wins = wins;
+        this.equals = equals;
         this.lost = lost;
         this.score = score;
         this.playedVsId = playedVsId;
+    }
+
+    public Club() {
+
     }
 
     public Long getClubId() {
@@ -53,6 +60,14 @@ public abstract class Club  {
         this.wins = wins;
     }
 
+    public int getEquals() {
+        return equals;
+    }
+
+    public void setEquals(int equals) {
+        this.equals = equals;
+    }
+
     public int getLost() {
         return lost;
     }
@@ -82,12 +97,12 @@ public abstract class Club  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Club club = (Club) o;
-        return allGames == club.allGames && wins == club.wins && lost == club.lost && score == club.score && playedVsId == club.playedVsId && clubId.equals(club.clubId) && name.equals(club.name);
+        return allGames == club.allGames && wins == club.wins && equals == club.equals && lost == club.lost && score == club.score && Objects.equals(clubId, club.clubId) && Objects.equals(name, club.name) && Objects.equals(playedVsId, club.playedVsId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(clubId, name, allGames, wins, lost, score, playedVsId);
+        return Objects.hash(clubId, name, allGames, wins, equals, lost, score, playedVsId);
     }
 
     @Override
@@ -97,6 +112,7 @@ public abstract class Club  {
                 ", name='" + name + '\'' +
                 ", allGames=" + allGames +
                 ", wins=" + wins +
+                ", equals=" + equals +
                 ", lost=" + lost +
                 ", score=" + score +
                 ", playedVsId=" + playedVsId +

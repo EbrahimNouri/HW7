@@ -2,19 +2,29 @@ package entity;
 
 import java.util.Objects;
 
-public abstract class League {
+public abstract class  League {
     private Long id;
     private String name;
     private String SportType;
-    private String fromDate;
-    private String thruDate;
+    private Club clubHome;
+    private Club clubAway;
+    private boolean home_win;
+    private boolean away_win;
+    private String matchDate;
 
-    public League(Long id, String name, String sportType, String fromDate, String thruDate) {
+    public League(Long id, String name, String sportType, Club clubHome, Club clubAway, boolean home_win, boolean away_win, String matchDate) {
         this.id = id;
         this.name = name;
         SportType = sportType;
-        this.fromDate = fromDate;
-        this.thruDate = thruDate;
+        this.clubHome = clubHome;
+        this.clubAway = clubAway;
+        this.home_win = home_win;
+        this.away_win = away_win;
+        this.matchDate = matchDate;
+    }
+
+    public League() {
+
     }
 
     public Long getId() {
@@ -41,20 +51,46 @@ public abstract class League {
         SportType = sportType;
     }
 
-    public String getFromDate() {
-        return fromDate;
+    public Club getClubHome() {
+        return clubHome;
     }
 
-    public void setFromDate(String fromDate) {
-        this.fromDate = fromDate;
+    public void setClubHome(Club clubHome) {
+        this.clubHome = clubHome;
     }
 
-    public String getThruDate() {
-        return thruDate;
+    public Club getClubAway() {
+        return clubAway;
     }
 
-    public void setThruDate(String thruDate) {
-        this.thruDate = thruDate;
+    public void setClubAway(Club clubAway) {
+        this.clubAway = clubAway;
+    }
+
+    public boolean isHome_win() {
+        return home_win;
+    }
+
+    public void setHome_win(boolean home_win) {
+        this.home_win = home_win;
+    }
+
+    public boolean isAway_win() {
+        return away_win;
+    }
+
+    public void setAway_win(boolean away_win) {
+        this.away_win = away_win;
+    }
+
+
+
+    public String getMatchDate() {
+        return matchDate;
+    }
+
+    public void setMatchDate(String matchDate) {
+        this.matchDate = matchDate;
     }
 
     @Override
@@ -62,12 +98,12 @@ public abstract class League {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         League league = (League) o;
-        return Objects.equals(id, league.id) && Objects.equals(name, league.name) && Objects.equals(SportType, league.SportType) && Objects.equals(fromDate, league.fromDate) && Objects.equals(thruDate, league.thruDate);
+        return home_win == league.home_win && away_win == league.away_win && Objects.equals(id, league.id) && Objects.equals(name, league.name) && Objects.equals(SportType, league.SportType) && Objects.equals(clubHome, league.clubHome) && Objects.equals(clubAway, league.clubAway) && Objects.equals(matchDate, league.matchDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, SportType, fromDate, thruDate);
+        return Objects.hash(id, name, SportType, clubHome, clubAway, home_win, away_win, matchDate);
     }
 
     @Override
@@ -76,8 +112,11 @@ public abstract class League {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", SportType='" + SportType + '\'' +
-                ", fromDate='" + fromDate + '\'' +
-                ", thruDate='" + thruDate + '\'' +
+                ", clubHome=" + clubHome +
+                ", clubAway=" + clubAway +
+                ", home_win=" + home_win +
+                ", away_win=" + away_win +
+                ", matchDate='" + matchDate + '\'' +
                 '}';
     }
 }
